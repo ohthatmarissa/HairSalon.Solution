@@ -14,7 +14,19 @@ namespace HairSalon.Controllers
         return View(allStylists);
     }
 
+    [HttpGet("/categories/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
 
+    // [HttpPost("/stylists/create")]
+    // public ActionResult Create(string name, int id, string about)
+    // {
+    //   Stylist myStylist = new Stylist(name, id, about);
+    //   myStylist.Save();
+    //   return RedirectToAction("Index");
+    // }
 
     // [HttpGet("/stylist/{stylistName}")]
     // public ActionResult Show(string name)
