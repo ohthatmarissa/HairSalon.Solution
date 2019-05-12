@@ -54,6 +54,7 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
+  
     // [TestMethod]
     // public void Find_ReturnsCorrectStylistFromDatabase_Stylist()
     // {
