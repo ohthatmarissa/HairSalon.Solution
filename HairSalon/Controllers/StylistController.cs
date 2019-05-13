@@ -14,7 +14,7 @@ namespace HairSalon.Controllers
         return View(allStylists);
     }
 
-    [HttpGet("/categories/new")]
+    [HttpGet("/stylists/new")]
     public ActionResult New()
     {
       return View();
