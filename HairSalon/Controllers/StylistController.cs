@@ -21,20 +21,20 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists")]
-    public ActionResult Create(string name, int id, string about)
+    public ActionResult Create(string stylistName, string stylistAbout)
     {
-      Stylist myStylist = new Stylist(name, id, about);
+      Stylist myStylist = new Stylist(stylistName, stylistAbout);
       myStylist.Save();
       List<Stylist>allStylists = Stylist.GetAll();
-      return RedirectToAction("Index", allStylists);
+      return RedirectToAction("Index");//, allStylists);
     }
 
-    // [HttpGet("/stylist/{stylistName}")]
-    // public ActionResult Show(string name)
-    // {
-    //     Stylist stylist = Stylist.GetByName(name);
-    //     return View(stylist);
-    // }
+    [HttpGet("/stylists/{id}")]
+    public ActionResult Show(int id)
+    {
+        Stylist stylist = Stylist.Find(id);
+        return View(stylist);
+    }
 
   }
 }

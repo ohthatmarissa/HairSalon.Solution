@@ -21,7 +21,7 @@ namespace HairSalon.Tests
     [TestMethod]
     public void StylistConstructor_CreatesInstanceOfStylist_Stylist()
     {
-      Stylist newStylist = new Stylist("test", 1, "test");
+      Stylist newStylist = new Stylist("Kelly", "test");
       Assert.AreEqual(typeof(Stylist), newStylist.GetType());
     }
 
@@ -29,7 +29,7 @@ namespace HairSalon.Tests
     public void GetName_ReturnsName_String()
     {
       string name = "Kelly";
-      Stylist newStylist = new Stylist(name, 1, "Test");
+      Stylist newStylist = new Stylist("Kelly", "Test", 1);
       string result = newStylist.GetName();
       Assert.AreEqual(name, result);
     }
@@ -45,23 +45,23 @@ namespace HairSalon.Tests
     [TestMethod]
     public void GetAll_ReturnsStylists_StylistList()
     {
-      Stylist newStylist1 = new Stylist("Kelly", 1, "test");
+      Stylist newStylist1 = new Stylist("Kelly", "test", 1);
       newStylist1.Save();
-      Stylist newStylist2 = new Stylist("Donna", 2, "test");
+      Stylist newStylist2 = new Stylist("Donna", "test", 1);
       newStylist2.Save();
       List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
       List<Stylist> result = Stylist.GetAll();
       CollectionAssert.AreEqual(newList, result);
     }
 
-  
-    // [TestMethod]
-    // public void Find_ReturnsCorrectStylistFromDatabase_Stylist()
-    // {
-    //   Stylist testStylist = new Stylist("Kelly", 1, "test");
-    //   testStylist.Save();
-    //   Stylist foundStylist = Stylist.Find(testStylist.GetId());
-    //   Assert.AreEqual(testStylist, foundStylist);
-    // }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectStylistFromDatabase_Stylist()
+    {
+      Stylist testStylist = new Stylist("Kelly", "test", 1);
+      testStylist.Save();
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
+      Assert.AreEqual(testStylist, foundStylist);
+    }
   }
 }

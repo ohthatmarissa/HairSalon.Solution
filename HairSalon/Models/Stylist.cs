@@ -10,7 +10,7 @@ namespace HairSalon.Models
       private int _id;
       public string _about;
 
-      public Stylist (string name, int id, string about)
+      public Stylist (string name, string about, int id=0)
       {
         _name = name;
         _id = id;
@@ -37,17 +37,13 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO stylists (name, id, about) VALUES (@name, @id, @about);";
+      cmd.CommandText = @"INSERT INTO stylists (stylist_name, stylist_about) VALUES (@stylist_name, @stylist_about);";
       MySqlParameter name = new MySqlParameter();
-      name.ParameterName = "@name";
+      name.ParameterName = "@stylist_name";
       name.Value = this._name;
       cmd.Parameters.Add(name);
-      MySqlParameter id = new MySqlParameter();
-      id.ParameterName = "@id";
-      id.Value = this._id;
-      cmd.Parameters.Add(id);
       MySqlParameter about = new MySqlParameter();
-      about.ParameterName = "@about";
+      about.ParameterName = "@stylist_about";
       about.Value = this._about;
       cmd.Parameters.Add(about);
       cmd.ExecuteNonQuery();
@@ -89,7 +85,7 @@ namespace HairSalon.Models
         int id = rdr.GetInt32(0);
         string name = rdr.GetString(1);
         string about = rdr.GetString(2);
-        Stylist newStylist = new Stylist(name, id, about);
+        Stylist newStylist = new Stylist(name, about, id);
         allStylists.Add(newStylist);
       }
       conn.Close();
@@ -100,60 +96,60 @@ namespace HairSalon.Models
       return allStylists;
     }
 
-    public static Stylist GetByName(string _name)
-        {
-          MySqlConnection conn = DB.Connection();
-          conn.Open();
-          MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-          cmd.CommandText = @"SELECT * FROM stylist WHERE name = '"+ _name +"';";
-          MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+    // public static Stylist GetByName(string _name)
+    //     {
+    //       MySqlConnection conn = DB.Connection();
+    //       conn.Open();
+    //       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+    //       cmd.CommandText = @"SELECT * FROM stylist WHERE name = '"+ _name +"';";
+    //       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+    //
+    //       int id;
+    //       string name;
+    //       string about;
+    //
+    //       rdr.Read();
+    //       do
+    //       {
+    //           id = rdr.GetInt32(0);
+    //           name = rdr.GetString(1);
+    //           about = rdr.GetString(2);
+    //       }
+    //       while(rdr.Read());
+    //
+    //
+    //       Stylist stylist = new Stylist(name, about);
+    //       return stylist;
+    //     }
 
-          int id;
-          string name;
-          string about;
-
-          rdr.Read();
-          do
-          {
-              id = rdr.GetInt32(0);
-              name = rdr.GetString(1);
-              about = rdr.GetString(2);
-          }
-          while(rdr.Read());
-
-
-          Stylist stylist = new Stylist(name, id, about);
-          return stylist;
-        }
-
-    // public static Stylist Find(int id)
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"SELECT * FROM stylists WHERE id = (@searchID);";
-    //   MySqlParameter searchId = new MySqlParameter();
-    //   searchId.ParameterName = "@searchId";
-    //   searchId.Value = id;
-    //   cmd.Parameters.Add(searchId);
-    //   MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-    //   int id = 0;
-    //   string name = "";
-    //   string about = "";
-    //   while(rdr.Read())
-    //   {
-    //     id = rdr.GetInt32(0);
-    //     name = rdr.GetString(1);
-    //     about = rdr.GetString(2);
-    //   }
-    //   Stylists newStylists = new Stylists(name, id, about);
-    //   conn.Close();
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    //   return newStylists;
-    // }
+    public static Stylist Find(int thisId)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylists WHERE id = @searchID;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = thisId;
+      cmd.Parameters.Add(searchId);
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int id = 0;
+      string name = "";
+      string about = "";
+      while(rdr.Read())
+      {
+        id = rdr.GetInt32(0);
+        name = rdr.GetString(1);
+        about = rdr.GetString(2);
+      }
+      Stylist newStylists = new Stylist(name, about, id);
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return newStylists;
+    }
 
       public static void ClearAll()
     {
