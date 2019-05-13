@@ -96,31 +96,6 @@ namespace HairSalon.Models
       return allStylists;
     }
 
-    // public static Stylist GetByName(string _name)
-    //     {
-    //       MySqlConnection conn = DB.Connection();
-    //       conn.Open();
-    //       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //       cmd.CommandText = @"SELECT * FROM stylist WHERE name = '"+ _name +"';";
-    //       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-    //
-    //       int id;
-    //       string name;
-    //       string about;
-    //
-    //       rdr.Read();
-    //       do
-    //       {
-    //           id = rdr.GetInt32(0);
-    //           name = rdr.GetString(1);
-    //           about = rdr.GetString(2);
-    //       }
-    //       while(rdr.Read());
-    //
-    //
-    //       Stylist stylist = new Stylist(name, about);
-    //       return stylist;
-    //     }
 
     public static Stylist Find(int thisId)
     {

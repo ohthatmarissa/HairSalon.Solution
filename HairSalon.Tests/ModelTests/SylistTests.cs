@@ -6,14 +6,14 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class HairSalonTest : IDisposable
+  public class StylistTest : IDisposable
   {
     public void Dispose()
     {
       Stylist.ClearAll();
     }
 
-    public HairSalonTest()
+    public StylistTest()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=marissa_perry_test;";
     }
@@ -29,7 +29,7 @@ namespace HairSalon.Tests
     public void GetName_ReturnsName_String()
     {
       string name = "Kelly";
-      Stylist newStylist = new Stylist("Kelly", "Test", 1);
+      Stylist newStylist = new Stylist(name, "Test", 1);
       string result = newStylist.GetName();
       Assert.AreEqual(name, result);
     }
