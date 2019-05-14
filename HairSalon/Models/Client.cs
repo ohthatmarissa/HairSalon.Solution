@@ -58,7 +58,7 @@ namespace HairSalon.Models
       stylistId.Value = this._stylistId;
       cmd.Parameters.Add(stylistId);
       cmd.ExecuteNonQuery();
-      _id = (int) cmd.LastInsertedId;
+      _id = (int)cmd.LastInsertedId;
       conn.Close();
       if (conn != null)
       {
@@ -131,7 +131,7 @@ namespace HairSalon.Models
               about = rdr.GetString(2);
               stylistId = rdr.GetInt32(3);
             }
-            Client newClients = new Client(name, about, id, stylistId);
+            Client newClients = new Client(name, about, stylistId, id);
             conn.Close();
             if (conn != null)
             {

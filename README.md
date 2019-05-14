@@ -17,7 +17,7 @@ An MVC web application that uses C#, ASP.NET, SQL, and PHPDatabase to allow owne
 | **Program recognizes when user enters a stylists**| Input: "Kelly" | Output: "Kelly"|
 |**USER SELECTS STYLIST FROM LIST**|
 | **When user selects a stylist from list, stylist details are open in show view**| Input: "Selects Kelly" | Output: "Kelly is a lead stylist and specializes in punky color and blonde" "A list of Kellys clients" |
-|**USER ADDS CLIENTS TO STYLISTS(USING DATABASE ONEN TO MANY)**|
+|**USER ADDS CLIENTS TO STYLISTS(USING DATABASE ONE TO MANY)**|
 | **Program recognizes when user enters a client under a stylist** | User input: "Mindy" | Output: "Mindy(under Kelly)" |
 |**USER CAN DELETE A STYLIST OR A CLIENT|
 
@@ -26,7 +26,7 @@ An MVC web application that uses C#, ASP.NET, SQL, and PHPDatabase to allow owne
 
 ## Setup/Installation Requirements
 
-Needs .Net 2.2
+Needs .Net 2.2, SQL, MAMP, database(PHPAdmin)
 
 1. Open terminal/command line
 2. Clone repository to your desktop
@@ -35,7 +35,13 @@ Needs .Net 2.2
 5. dotnet restore/dotnet build/dotnet run
 6. Open http://localhost:5000 in browser
 
-. Checkout all of the methods for the functionality of the program
+To recreate database:
+1: Start MAMP and click Open WebStart page in the MAMP window.
+2: In the website you're taken to, select phpMyAdmin from the Tools      dropdown.
+3: Select the Import tab.
+4: Note that it's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing isn't already present.
+5: Select your database file, and click Go.
+
 
 ## Known Bugs
 * No known issues

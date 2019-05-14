@@ -61,6 +61,8 @@ namespace HairSalon.Tests
       Stylist testStylist = new Stylist("Kelly", "test", 1);
       testStylist.Save();
       Stylist foundStylist = Stylist.Find(testStylist.GetId());
+      Console.WriteLine("HI");
+      // Console.WriteLine(foundClient);
       Assert.AreEqual(testStylist, foundStylist);
     }
   }
