@@ -36,11 +36,11 @@ Needs .Net 2.2, SQL, MAMP, database(PHPAdmin)
 6. Open http://localhost:5000 in browser
 
 To recreate database:
-1: Start MAMP and click Open WebStart page in the MAMP window.
-2: In the website you're taken to, select phpMyAdmin from the Tools      dropdown.
-3: Select the Import tab.
-4: Note that it's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing isn't already present.
-5: Select your database file, and click Go.
+1. Start MAMP and click Open WebStart page in the MAMP window.
+2. In the website you're taken to, select phpMyAdmin from the Tools      dropdown.
+3. Select the Import tab.
+4. Note that it's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing isn't already present.
+5. Select your database file, and click Go.
 
 
 ## Known Bugs
