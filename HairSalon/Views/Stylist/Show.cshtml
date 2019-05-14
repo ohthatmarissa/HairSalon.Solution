@@ -15,6 +15,14 @@
   <br>
   <p>About</p>
   <li>@Model.GetAbout()</li>
+  <br>
+  <form action="/clients" method="post">
+    <label for="clientName">Client Name</label>
+    <input id="clientName" name="clientName" type="text"><br>
+    <label for="clientAbout">Client About</label>
+    <input id="clientAbout" name="clientAbout" type="text">
+    <button type="submit">Add</button>
+  </form>
 <br>
 <br>
 <p><a href="/">Back Home</a></p>
