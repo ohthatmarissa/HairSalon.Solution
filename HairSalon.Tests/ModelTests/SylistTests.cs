@@ -58,12 +58,30 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Find_ReturnsCorrectStylist_Stylist()
     {
-      Stylist testStylist = new Stylist("Kelly", "test", 1);
+      Stylist testStylist = new Stylist("Kelly", "test");
       testStylist.Save();
       Stylist foundStylist = Stylist.Find(testStylist.GetId());
-      Console.WriteLine("HI");
-      // Console.WriteLine(foundClient);
       Assert.AreEqual(testStylist, foundStylist);
+    }
+
+    [TestMethod]
+    public void GetClients_ReturnClients_Clients()
+    {
+      Stylist stylist1 = new Stylist("Kelly", "Test");
+      Console.WriteLine("before save " + stylist1.GetId());
+      stylist1.Save();
+      Console.WriteLine("after save " + stylist1.GetId());
+      //int stylistId = stylist1.GetId();
+      Client client1 = new Client("Jerry", "test", stylist1.GetId());
+      client1.Save();
+      Client client2 = new Client("Kramer", "test", stylist1.GetId());
+      client2.Save();
+      List<Client> listClients = new List<Client>{client1, client2};
+      List<Client> foundClients = stylist1.GetClients();
+      Console.WriteLine("Hi" + listClients.Count);
+      Console.WriteLine("Hi" + foundClients.Count);
+
+      CollectionAssert.AreEqual(listClients, foundClients);
     }
   }
 }

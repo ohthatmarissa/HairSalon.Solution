@@ -126,6 +126,41 @@ namespace HairSalon.Models
       return newStylists;
     }
 
+    public List<Client> GetClients()
+    {
+      List<Client> foundClients = new List<Client>{};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @searchId;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = this._id;
+      cmd.Parameters.Add(searchId);
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int id = 0;
+      string name = "";
+      string about = "";
+      int stylistId = 0;
+      while(rdr.Read())
+      {
+        id = rdr.GetInt32(0);
+        name = rdr.GetString(1);
+        about = rdr.GetString(2);
+        stylistId = rdr.GetInt32(3);
+
+        Client newClient = new Client(name, about, stylistId, id);
+        foundClients.Add(newClient);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundClients;
+    }
+
+
       public static void ClearAll()
     {
       MySqlConnection conn = DB.Connection();
@@ -139,5 +174,5 @@ namespace HairSalon.Models
        conn.Dispose();
       }
     }
-    }
+  }
 }
