@@ -23,8 +23,8 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index");//, allClients);
     }
 
-    [HttpGet("/clients/{id}")]
-    public ActionResult Show(int id)
+    [HttpGet("/stylists/{clientStylistId}/clients/{id}")]
+    public ActionResult Show(int clientStylistId, int id)
     {
         Client client = Client.Find(id);
         return View(client);

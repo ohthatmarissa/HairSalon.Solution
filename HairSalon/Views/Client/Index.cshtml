@@ -16,7 +16,7 @@
 <ul>
     @foreach (Client client in @Client.GetAll())
     {
-      <a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><br>
+    <li><a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a></li>
     }
 </ul>
 <br>
