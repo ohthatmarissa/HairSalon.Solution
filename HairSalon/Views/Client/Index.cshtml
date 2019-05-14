@@ -14,9 +14,9 @@
   }
 
 <ul>
-    @foreach (Client client in @Model)
+    @foreach (Client client in @Client.GetAll())
     {
-        <li><a href="/clients/@client.GetId()">@client.GetName()</a></li>
+      <a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><br>
     }
 </ul>
 <br>

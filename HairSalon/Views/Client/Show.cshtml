@@ -1,0 +1,21 @@
+@using HairSalon.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+
+
+
+<h3>Details:</h3>
+
+<ul>
+  <p>Name</p>
+  <li>@Model.Client.GetName()</li>
+  <br>
+  <p>About</p>
+  <li>@Model.Client.GetAbout()</li>
+  </ul>
+  <br>
+  <br>
+<p><a href="/">Back Home</a></p>

@@ -16,7 +16,24 @@
   <p>About</p>
   <li>@Model.GetAbout()</li>
   <br>
+  <h3>Clients</h3>
+
+    @if(Model.GetClients().Count == 0)
+  {
+    <p>There are no clients to display.</p>
+  }
+  else
+  {
+    @foreach (Client client in Model.GetClients())
+    {
+      <a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><br>
+    }
+  }
+  <br>
+  <h3>Add Clients to Stylist</h3>
+  <br>
   <form action="/clients" method="post">
+    <input for="clientStylistId" name="clientStylistId" type="hidden" value="@Model.GetId()">
     <label for="clientName">Client Name</label>
     <input id="clientName" name="clientName" type="text"><br>
     <label for="clientAbout">Client About</label>
