@@ -56,7 +56,7 @@ namespace HairSalon.Tests
 
 
     [TestMethod]
-    public void Find_ReturnsCorrectStylistFromDatabase_Stylist()
+    public void Find_ReturnsCorrectStylist_Stylist()
     {
       Stylist testStylist = new Stylist("Kelly", "test", 1);
       testStylist.Save();
