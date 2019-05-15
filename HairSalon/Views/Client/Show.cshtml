@@ -1,18 +1,20 @@
-@using HairSalon.Models;
-
 @{
   Layout = "_Layout";
 }
 
-<h3>Details:</h3>
+@using HairSalon.Models;
 
-<ul>
-  <p>Name</p>
+<div class="container">
+<h1>Client Details:</h1>
+
+<h2><ul>
+  <p>Name:</p>
   <li>@Model.GetName()</li>
   <br>
-  <p>About</p>
+  <p>About:</p>
   <li>@Model.GetAbout()</li>
   </ul>
   <br>
   <br>
-<p><a href="/">Back Home</a></p>
+<p><a href="/">Back Home</a></p></h2>
+</div>

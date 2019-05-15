@@ -1,22 +1,20 @@
-@using HairSalon.Models;
-
 @{
   Layout = "_Layout";
 }
 
+@using HairSalon.Models;
 
+<div class ="container">
+<h1>Stylist Details:</h1><br>
 
+<h2>
+  <p>Name: @Model.GetName()</p>
 
-<h3>Details:</h3>
-
-<ul>
-  <p>Name</p>
-  <li>@Model.GetName()</li>
   <br>
-  <p>About</p>
-  <li>@Model.GetAbout()</li>
+  <p>About: @Model.GetAbout()</p>
+
   <br>
-  <h3>Clients</h3>
+  <h2>Clients</h2>
 
     @if(Model.GetClients().Count == 0)
   {
@@ -26,20 +24,22 @@
   {
     @foreach (Client client in Model.GetClients())
     {
-      <a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a><br>
+      <h2><a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a></h2><br>
     }
   }
   <br>
-  <h3>Add Clients to Stylist</h3>
+  <h2>Add Clients to Stylist</h2>
   <br>
-  <form action="/clients" method="post">
+  <form action="/clients" method="post"><h2>
     <input for="clientStylistId" name="clientStylistId" type="hidden" value="@Model.GetId()">
     <label for="clientName">Client Name</label>
     <input id="clientName" name="clientName" type="text"><br>
     <label for="clientAbout">Client About</label>
-    <input id="clientAbout" name="clientAbout" type="text">
+    <input id="clientAbout" name="clientAbout" type="text"><br></h2>
+
     <button type="submit">Add</button>
   </form>
 <br>
 <br>
-<p><a href="/">Back Home</a></p>
+<h2><p><a href="/">Back Home</a></p></h2>
+</div>

@@ -10,17 +10,17 @@
 
 @if (@Model.Count == 0)
   {
-    <h3>No Stylists entered yet!</h3>
+    <h2>No Stylists entered yet!</h2>
   }
 
 <ul>
     @foreach (Stylist stylist in @Model)
     {
-        <li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></li>
+      <h2><li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></li></h2>
     }
 </ul>
 <br>
 <br>
 
-<p><a href="/">Back Home</a></p>
+<h3><a href="/">Back Home</a></p></h3>
 </div>
