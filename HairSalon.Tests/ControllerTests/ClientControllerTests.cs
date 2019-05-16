@@ -21,7 +21,7 @@ namespace HairSalon.Tests
       public void Create_ReturnsCorrectView_True()
       {
         ClientController controller = new ClientController();
-        ActionResult indexView = controller.Show(1);
+        ActionResult indexView = controller.Show(1, 1);
         Assert.IsInstanceOfType(indexView, typeof(ViewResult));
       }
     }
