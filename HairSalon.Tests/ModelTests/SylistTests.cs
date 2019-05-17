@@ -83,5 +83,21 @@ namespace HairSalon.Tests
 
       CollectionAssert.AreEqual(listClients, foundClients);
     }
+
+    [TestMethod]
+    public void Edit_EditsStylist_Stylist()
+    {
+      string name = "Kelly";
+      string about = "Awesome";
+      Stylist stylist = new Stylist(name, about);
+      stylist.Save();
+      string newName = "Kellie";
+      string newAbout = "So Good";
+      Stylist expectedResult = new Stylist(newName, newAbout);
+      stylist.Edit(newName, newAbout);
+      Stylist actualResult = new Stylist(stylist.GetName(), stylist.GetAbout());
+      Assert.AreEqual(expectedResult, actualResult);
+
+    }
   }
 }

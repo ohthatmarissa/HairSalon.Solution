@@ -160,6 +160,28 @@ namespace HairSalon.Models
       return foundClients;
     }
 
+    public void Edit (string newName, string newAbout)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE stylists SET name = @newName, @newAbout WHERE id = @StylistId;";
+      MySqlParameter stylistId = new MySqlParameter("@stylistId, _id");
+      cmd.Parameters.Add(stylistId);
+      MySqlParameter name = new MySqlParameter("@newName", newName);
+      cmd.Parameters.Add(name);
+      MySqlParameter about = new MySqlParameter("@newAbout", newAbout);
+      cmd.Parameters.Add(about);
+      cmd.ExecuteNonQuery();
+      _name = newName;
+      _about = newAbout;
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
 
       public static void ClearAll()
     {
