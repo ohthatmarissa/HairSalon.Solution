@@ -1,4 +1,4 @@
-# Word Counter
+# Hair Salon
 
 #### An MVC web application for a hair salon. The owner should be able to add a list of the stylists, and for each stylist, add clients who see that stylist.
 
@@ -7,6 +7,7 @@
 ## Description
 
 An MVC web application that uses C#, ASP.NET, SQL, and PHPDatabase to allow owner to see a list of stylists, select the stylist and see their details along with a list of clients for the stylist. Has the ability to add new stylists when hired. Has ability to add new clients to stylists. 5/10/19
+*UPDATE 5/17/19* Program has the ability to display specialties and add a specialty to a stylist. Delete one or all stylists and clients. Edit the name of stylist and all info of client.
 
 
 ### Specs
@@ -19,7 +20,12 @@ An MVC web application that uses C#, ASP.NET, SQL, and PHPDatabase to allow owne
 | **When user selects a stylist from list, stylist details are open in show view**| Input: "Selects Kelly" | Output: "Kelly is a lead stylist and specializes in punky color and blonde" "A list of Kellys clients" |
 |**USER ADDS CLIENTS TO STYLISTS(USING DATABASE ONE TO MANY)**|
 | **Program recognizes when user enters a client under a stylist** | User input: "Mindy" | Output: "Mindy(under Kelly)" |
-|**USER CAN DELETE A STYLIST OR A CLIENT|
+|**USER ADDS SPECIALTIES TO STYLIST(USING MANY TO MANY DATABASE)**|
+| **Program recognizes when user enters a specialty under a stylist** | User input: "Long Hair" | Output: "Long Hair(under Kelly)" |
+|**USER CAN VIEW AND SELECT FROM A LIST OF SPECIALTIES**|
+| **When user selects a specialty a list of stylists open in a show view** |
+|**USER CAN DELETE A STYLIST OR A CLIENT**|
+|**USER CAN EDIT STYLIST NAME AND ALL CLIENT INFO**|
 
 
 
