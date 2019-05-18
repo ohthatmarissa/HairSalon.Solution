@@ -78,8 +78,8 @@ namespace HairSalon.Tests
       client2.Save();
       List<Client> listClients = new List<Client>{client1, client2};
       List<Client> foundClients = stylist1.GetClients();
-      Console.WriteLine("Hi" + listClients.Count);
-      Console.WriteLine("Hi" + foundClients.Count);
+      // Console.WriteLine("Hi" + listClients.Count);
+      // Console.WriteLine("Hi" + foundClients.Count);
 
       CollectionAssert.AreEqual(listClients, foundClients);
     }
@@ -96,6 +96,8 @@ namespace HairSalon.Tests
       Stylist expectedResult = new Stylist(newName, newAbout);
       stylist.Edit(newName, newAbout);
       Stylist actualResult = new Stylist(stylist.GetName(), stylist.GetAbout());
+      Console.WriteLine("Hi" + expectedResult.GetAbout());
+      Console.WriteLine("Hi" + actualResult.GetAbout());
       Assert.AreEqual(expectedResult, actualResult);
 
     }
