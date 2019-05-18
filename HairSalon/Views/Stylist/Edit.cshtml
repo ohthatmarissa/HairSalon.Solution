@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<div class="container">
+<h1>Edit Stylist<h1>
+
+<form action="/stylists/@Model.GetId()" method="post">
+  <h2><label for="stylistName">Stylist Name</label></h2>
+  <input id="stylistName" name="stylistName" type="text"><br>
+  <h2><label for="stylistAbout">Stylist About</label></h2>
+  <input id="stylistAbout" name="stylistAbout" type="text"><br>
+  <br>
+  <button type="submit">Add</button>
+</form>
+<br>
+<br>
+<p><a href="/">Back Home</a></p>
+</div>

@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+// using System.ComponentModel.DataAnnotations;
 
 namespace HairSalon.Models
 {
     public class Stylist
     {
+      // [Display(Name = "Name")]
+      // [DataType(DataType.Text)]
+      // [DisplayFormat(DataFormatString = "{stylist_name}", ApplyFormatInEditMode = true)]
       private string _name;
       private int _id;
       public string _about;

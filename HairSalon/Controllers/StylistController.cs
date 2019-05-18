@@ -49,8 +49,8 @@ namespace HairSalon.Controllers
     public ActionResult Edit(string newName, string newAbout, int stylistId)
     {
       Stylist selectedStylist = Stylist.Find(stylistId);
-      selectedStylist.Edit(newName);
-      selectedStylist.Edit(newAbout);
+      selectedStylist.Edit(newName, newAbout);
+
       return RedirectToAction("Index");
     }
   }
