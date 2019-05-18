@@ -7,12 +7,10 @@ namespace HairSalon.Models
 {
     public class Stylist
     {
-      // [Display(Name = "Name")]
-      // [DataType(DataType.Text)]
-      // [DisplayFormat(DataFormatString = "{stylist_name}", ApplyFormatInEditMode = true)]
       private string _name;
       private int _id;
       public string _about;
+
 
       public Stylist (string name, string about, int id=0)
       {
@@ -164,16 +162,16 @@ namespace HairSalon.Models
       return foundClients;
     }
 
-    public void Edit (string newName, string newAbout)
+    public void Edit (int id, string newName, string newAbout)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE stylists SET stylist_name = @newName, stylist_about = @newAbout WHERE id = @StylistId;";
-      MySqlParameter stylistId = new MySqlParameter();
-      stylistId.ParameterName = "@stylistId";
-      stylistId.Value = _id;
-      cmd.Parameters.Add(stylistId);
+      cmd.CommandText = @"UPDATE stylists SET stylist_name = @newName, stylist_about = @newAbout WHERE id = @SearchId;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = this._id;
+      cmd.Parameters.Add(searchId);
       MySqlParameter name = new MySqlParameter();
       name.ParameterName = "@newName";
       name.Value = newName;

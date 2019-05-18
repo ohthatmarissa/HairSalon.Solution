@@ -93,8 +93,8 @@ namespace HairSalon.Tests
       stylist.Save();
       string newName = "Kellie";
       string newAbout = "So Good";
-      Stylist expectedResult = new Stylist(newName, newAbout);
-      stylist.Edit(newName, newAbout);
+      Stylist expectedResult = new Stylist("Kellie", "So Good");
+      stylist.Edit(1, newName, newAbout);
       Stylist actualResult = new Stylist(stylist.GetName(), stylist.GetAbout());
       Console.WriteLine("Hi" + expectedResult.GetAbout());
       Console.WriteLine("Hi" + actualResult.GetAbout());

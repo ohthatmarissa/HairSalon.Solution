@@ -42,11 +42,11 @@ namespace HairSalon.Tests
       }
 
       [TestMethod]
-      public void EditReturnsOk()
+      public void UpdateReturnsOk()
       {
         StylistController controller = new StylistController();
-        ActionResult actionResult = controller.Edit();
-        Assert.IsInstanceOfType(actionResult, typeof(RedirectToActionResult));
+        ActionResult indexView = controller.Edit(1);
+        Assert.IsInstanceOfType(indexView, typeof(ViewResult));
       }
     }
 }
