@@ -68,9 +68,9 @@ namespace HairSalon.Tests
     public void GetClients_ReturnClients_Clients()
     {
       Stylist stylist1 = new Stylist("Kelly", "Test");
-      Console.WriteLine("before save " + stylist1.GetId());
+      // Console.WriteLine("before save " + stylist1.GetId());
       stylist1.Save();
-      Console.WriteLine("after save " + stylist1.GetId());
+      // Console.WriteLine("after save " + stylist1.GetId());
       //int stylistId = stylist1.GetId();
       Client client1 = new Client("Jerry", "test", stylist1.GetId());
       client1.Save();
@@ -96,8 +96,8 @@ namespace HairSalon.Tests
       Stylist expectedResult = new Stylist("Kellie", "So Good");
       stylist.Edit(1, newName, newAbout);
       Stylist actualResult = new Stylist(stylist.GetName(), stylist.GetAbout());
-      Console.WriteLine("Hi" + expectedResult.GetAbout());
-      Console.WriteLine("Hi" + actualResult.GetAbout());
+      // Console.WriteLine("Hi" + expectedResult.GetAbout());
+      // Console.WriteLine("Hi" + actualResult.GetAbout());
       Assert.AreEqual(expectedResult, actualResult);
     }
 

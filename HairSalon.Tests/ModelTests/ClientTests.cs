@@ -54,5 +54,22 @@ namespace HairSalon.Tests
         Client foundClient = Client.Find(testClient.GetId());
         Assert.AreEqual(testClient, foundClient);
       }
+
+      [TestMethod]
+      public void Edit_EditsClient_Client()
+      {
+        string name = "Jerry";
+        string about = "Super cute";
+        Client client = new Client(name, about, 1);
+        client.Save();
+        string newName = "Jerri";
+        string newAbout = "Changed name";
+        Client expectedResult = new Client("Jerri", "Changed name", 1);
+        client.Edit(1, newName, newAbout);
+        Client actualResult = new Client(client.GetName(), client.GetAbout(), client.GetStylistId());
+        Console.WriteLine("Hi" + expectedResult.GetAbout());
+        Console.WriteLine("Hi" + actualResult.GetAbout());
+        Assert.AreEqual(expectedResult, actualResult);
+      }
   }
 }

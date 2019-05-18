@@ -29,5 +29,21 @@ namespace HairSalon.Controllers
         Client client = Client.Find(id);
         return View(client);
     }
+
+    [HttpGet("/clients/{id}/edit")]
+    public ActionResult Edit(int id)
+    {
+      Client selectedClient = Client.Find(id);
+      return View(selectedClient);
+    }
+
+    [HttpPost("/clients/{id}")]
+    public ActionResult Update(int id, string newName, string newAbout)
+    {
+      Client selectedClient = Client.Find(id);
+      selectedClient.Edit(id, newName, newAbout);
+
+      return RedirectToAction("Show");
+    }
   }
 }
