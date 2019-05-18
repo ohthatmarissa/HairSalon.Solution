@@ -99,7 +99,19 @@ namespace HairSalon.Tests
       Console.WriteLine("Hi" + expectedResult.GetAbout());
       Console.WriteLine("Hi" + actualResult.GetAbout());
       Assert.AreEqual(expectedResult, actualResult);
+    }
 
+    [TestMethod]
+    public void Delete_DeletesStylist_Stylist()
+    {
+      Stylist stylist1 = new Stylist("Kelly", "test");
+      stylist1.Save();
+      Stylist stylist2 = new Stylist ("Andrea", "test");
+      stylist2.Save();
+      stylist1.Delete();
+      List<Stylist> newList = new List<Stylist> { stylist2 };
+      List<Stylist> result = Stylist.GetAll();
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
