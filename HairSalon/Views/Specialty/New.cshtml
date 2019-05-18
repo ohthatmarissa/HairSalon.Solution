@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+@using HairSalon.Models;
+
+<div class="container">
+<h1>Add A New Specialty<h1>
+
+<form action="/specialties" method="post">
+  <h2><label for="description">Specialty Description</label></h2>
+  <input id="description" name="description" type="text"><br>
+  <br>
+  <button type="submit">Add</button>
+</form>
+<br>
+<br>
+<p><a href="/">Back Home</a></p>
+</div>

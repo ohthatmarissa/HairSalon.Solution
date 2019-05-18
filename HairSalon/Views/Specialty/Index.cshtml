@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<div class="container">
+<h1>Specialties</h1>
+<br>
+
+@if (@Model.Count == 0)
+  {
+    <h2>No Specialties entered yet!</h2>
+  }
+
+<ul>
+    @foreach (Specialty specialty in @Model)
+    {
+      <h2><li><a href="/specialtys/@specialty.GetId()">@specialty.GetDescription()</a></h2>
+
+    }
+</ul>
+<br>
+<br>
+
+<h3><a href="/">Back Home</a></p></h3>
+</div>
