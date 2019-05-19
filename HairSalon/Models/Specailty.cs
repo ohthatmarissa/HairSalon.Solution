@@ -109,58 +109,57 @@ namespace HairSalon.Models
       return newSpecialty;
     }
 
-    // public void AddStylist(Stylist newStylist)
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
-    //   MySqlParameter stylistId = new MySqlParameter();
-    //   stylistId.ParameterName = "@StylistId";
-    //   stylistId.Value = newStylist.GetId();
-    //   cmd.Parameters.Add(stylistId);
-    //   MySqlParameter specialtyId = new MySqlParameter();
-    //   specialtyId.ParameterName = "@SpecialtyId";
-    //   specialtyId.Value = _id;
-    //   cmd.Parameters.Add(specialtyId);
-    //   cmd.ExecuteNonQuery();
-    //   conn.Close();
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    // }
-    //
-    // public static List<Stylist> GetStylists()
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"SELECT stylists.* FROM specialties
-    //   JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
-    //   JOIN stylists ON (stylists.id = stylists_specialties.stylist_id)
-    //   WHERE specialties.id = @SpecialtyId;";
-    //   MySqlParameter specialtyId = new MySqlParameter();
-    //   specialtyId.ParameterName = "@SpecialtyId";
-    //   specialtyId.Value = specialty_id;
-    //   cmd.Parameters.Add(specialtyId);
-    //   MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-    //   List<Stylist> allStylists = new List<Stylist> {};
-    //   while(rdr.Read())
-    //   {
-    //     int stylistId = rdr.GetInt32(0);
-    //     string stylistName = rdr.GetString(1);
-    //     string stylistAbout = rdr.GetString(2);
-    //     Stylist newStylist = new Stylist(stylistName, stylistAbout, stylistId);
-    //     allStylists.Add(newStylist);
-    //   }
-    //   conn.Close();
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    //   return allStylists;
-    // }
+    public void AddStylist(Stylist newStylist)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@StylistId";
+      stylistId.Value = newStylist.GetId();
+      cmd.Parameters.Add(stylistId);
+      MySqlParameter specialtyId = new MySqlParameter();
+      specialtyId.ParameterName = "@SpecialtyId";
+      specialtyId.Value = _id;
+      cmd.Parameters.Add(specialtyId);
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public static List<Stylist> GetStylists()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT stylists.* FROM stylists
+      JOIN stylists_specialties ON (stylists.id = stylists_specialties.stylist_id)
+      WHERE specialty_id = @searchId;";
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@SearchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      List<Stylist> allStylists = new List<Stylist> {};
+      while(rdr.Read())
+      {
+        int stylistId = rdr.GetInt32(0);
+        string stylistName = rdr.GetString(1);
+        string stylistAbout = rdr.GetString(2);
+        Stylist newStylist = new Stylist(stylistName, stylistAbout, stylistId);
+        allStylists.Add(newStylist);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allStylists;
+    }
 
     public static void ClearAll()
     {
