@@ -55,6 +55,9 @@ namespace HairSalon.Models
         Specialty newSpecialty = (Specialty) otherSpecialty;
         bool idEquality = this.GetId() == newSpecialty.GetId();
         bool descriptionEquality = this.GetDescription() == newSpecialty.GetDescription();
+        Console.WriteLine("newSpecialty" + newSpecialty.GetId());
+        Console.WriteLine("this" + this.GetId());
+
         return (idEquality && descriptionEquality);
       }
     }
@@ -131,7 +134,7 @@ namespace HairSalon.Models
       }
     }
 
-    public static List<Stylist> GetStylists()
+    public List<Stylist> GetStylists()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
@@ -140,7 +143,7 @@ namespace HairSalon.Models
       JOIN stylists_specialties ON (stylists.id = stylists_specialties.stylist_id)
       WHERE specialty_id = @searchId;";
       MySqlParameter searchId = new MySqlParameter();
-      searchId.ParameterName = "@SearchId";
+      searchId.ParameterName = "@searchId";
       searchId.Value = _id;
       cmd.Parameters.Add(searchId);
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;

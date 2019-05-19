@@ -46,10 +46,10 @@ namespace HairSalon.Tests
     public void GetAll_ReturnsSpecialties_SpecialtyList()
     {
       Specialty newSpecialty1 = new Specialty("color");
-      Console.WriteLine("before save " + newSpecialty1.GetId());
+      // Console.WriteLine("before save " + newSpecialty1.GetId());
       newSpecialty1.Save();
       Specialty newSpecialty2 = new Specialty("long hair");
-      Console.WriteLine("after save " + newSpecialty1.GetId());
+      // Console.WriteLine("after save " + newSpecialty1.GetId());
       newSpecialty2.Save();
       List<Specialty> newList = new List<Specialty> { newSpecialty1, newSpecialty2 };
       List<Specialty> result= Specialty.GetAll();

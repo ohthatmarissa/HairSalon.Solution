@@ -28,11 +28,18 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index");
     }
 
-    // [HttpGet("/stylists/{clientStylistId}/specialties/{id}")]
-    // public ActionResult Show(int clientStylistId, int id)
-    // {
-    //     Specialty client = Specialty.Find(id);
-    //     return View(client);
-    // }
+    [HttpGet("/spcialties/{id}")]
+    public ActionResult Show(int id)
+    {
+      Specialty specialty = Specialty.Find(id);
+      return View(specialty);
+    }
+
+    [HttpGet("/stylists/{clientStylistId}/specialties/{id}")]
+    public ActionResult Show(int clientStylistId, int id)
+    {
+        Specialty client = Specialty.Find(id);
+        return View(client);
+    }
   }
 }

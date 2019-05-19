@@ -41,8 +41,8 @@ namespace HairSalon.Controllers
     {
       Stylist Stylist = Stylist.Find(stylistId);
       Stylist.Delete();
-      List<Stylist> allStylists = Stylist.GetAll();
-      return RedirectToAction("Index", allStylists);
+
+      return RedirectToAction("Index");
     }
 
     [HttpGet("/stylists/{id}/edit")]

@@ -11,6 +11,7 @@ namespace HairSalon.Tests
     public void Dispose()
     {
       Stylist.ClearAll();
+      Specialty.ClearAll();
     }
 
     public StylistTest()
@@ -115,7 +116,7 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void AddSpecialty_AddsListToStylist_SpecialtyList()
+    public void AddSpecialty_AddsSpecialtyToStylist_SpecialtyList()
     {
       Stylist testStylist = new Stylist("Kelly", "test", 1);
       testStylist.Save();
@@ -124,7 +125,9 @@ namespace HairSalon.Tests
       testStylist.AddSpecialty(testSpecialty);
       List<Specialty> testList = new List<Specialty>{ testSpecialty };
       List<Specialty> result = testStylist.GetSpecialties();
-      Collection.Assert.AreEqual(testList, result);
+      Console.WriteLine("Hi" + testSpecialty.GetId());
+      // Console.WriteLine("Hi" + result.Count);
+      CollectionAssert.AreEqual(testList, result);
     }
 
     [TestMethod]
@@ -133,9 +136,9 @@ namespace HairSalon.Tests
       Stylist testStylist = new Stylist("Kelly", "test", 1);
       testStylist.Save();
       Specialty testSpecialty1 = new Specialty("color");
-      testSpecialty.Save();
+      testSpecialty1.Save();
       Specialty testSpecialty2 = new Specialty("long hair");
-      testSpecialty.Save();
+      testSpecialty2.Save();
       testStylist.AddSpecialty(testSpecialty1);
       List<Specialty> testList = new List<Specialty>{ testSpecialty1 };
       List<Specialty> result = testStylist.GetSpecialties();
