@@ -6,12 +6,19 @@
 
 <div class="container">
 <h1>Edit Client<h1>
+<h2>
+  <p>Name: @Model.GetName()</p>
+
+  <br>
+  <p>About: @Model.GetAbout()</p>
+
+  <br>
 
 <form action="/clients/@Model.GetId()" method="post">
-  <h2><label for="clientName">Client Name</label></h2>
-  <input id="clientName" name="clientName" type="text"><br>
-  <h2><label for="clientAbout">Client About</label></h2>
-  <input id="clientAbout" name="clientAbout" type="text"><br>
+  <h2><label for="newName">Client Name</label></h2>
+  <input id="newName" name="newName" type="text"><br>
+  <h2><label for="newAbout">Client About</label></h2>
+  <input id="newAbout" name="newAbout" type="text"><br>
   <br>
   <button type="submit">Update</button>
 </form>

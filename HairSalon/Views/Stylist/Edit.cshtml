@@ -6,6 +6,13 @@
 
 <div class="container">
 <h1>Edit Stylist<h1>
+<h2>
+  <p>Name: @Model.GetName()</p>
+
+  <br>
+  <p>About: @Model.GetAbout()</p>
+
+  <br>
 
 <form action="/stylists/@Model.GetId()" method="post">
   <h2><label for="newName">Stylist Name</label></h2>
