@@ -53,8 +53,8 @@ namespace HairSalon.Tests
       newSpecialty2.Save();
       List<Specialty> newList = new List<Specialty> { newSpecialty1, newSpecialty2 };
       List<Specialty> result= Specialty.GetAll();
-      Console.WriteLine("Hi" + newList.Count);
-      Console.WriteLine("Hi" + result.Count);
+      // Console.WriteLine("Hi" + newList.Count);
+      // Console.WriteLine("Hi" + result.Count);
       CollectionAssert.AreEqual(newList, result);
     }
 
@@ -77,6 +77,8 @@ namespace HairSalon.Tests
       testSpecialty.AddStylist(testStylist);
       List<Stylist> testList = new List<Stylist>{ testStylist};
       List<Stylist> result = testSpecialty.GetStylists();
+      Console.WriteLine("testList" + testList.Count);
+      Console.WriteLine("result" + result.Count);
       CollectionAssert.AreEqual(testList, result);
     }
 

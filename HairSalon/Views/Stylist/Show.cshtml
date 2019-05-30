@@ -14,6 +14,33 @@
   <p>About: @Model.GetAbout()</p>
 
   <br>
+  <h2>Specialties</h2>
+
+    @if(Model.GetSpecialties().Count == 0)
+  {
+    <p>There are no specialties to display.</p>
+  }
+  else
+  {
+    @foreach (Specialty specialty in Model.GetSpecialties())
+    {
+      <!-- <h2><a href="/specialties/@specialty.GetId()">@specialty.GetDescription()</a></h2> -->
+        <h2><a href="/specialties/@Specialty.Find(@specialty.GetId())/specialties/@specialty.GetId()">@specialty.GetDescription()</a></h2>
+    }
+  }
+
+  <h2>Add a Specialty</h2>
+  <br>
+  <form action="/stylists/{id}" method="post"><h2>
+    <input for="specialtyId" name="specialtyId" type="hidden" value="@Model.GetId()">
+    <label for="description">Specialty</label>
+    <input id="description" name="description" type="text"><br>
+    <br>
+
+    <button type="submit">Add</button>
+  </form>
+  <br>
+  <br>
   <h2>Clients</h2>
 
     @if(Model.GetClients().Count == 0)
@@ -24,7 +51,7 @@
   {
     @foreach (Client client in Model.GetClients())
     {
-      <h2><a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a></h2><br>
+      <h2><a href="/stylists/@Stylist.Find(@client.GetStylistId()).GetId()/clients/@client.GetId()">@client.GetName()</a></h2>
     }
   }
   <br>

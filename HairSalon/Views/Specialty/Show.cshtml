@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<div class="container">
+<h1>Specialty Details:</h1>
+
+<h2>
+  <p>@Model.GetDescription()</p>
+  <br>
+  <br>
+  <h2>Stylists</h2>
+
+    @if(Model.GetStylists().Count == 0)
+  {
+    <p>There are no stylists to display.</p>
+  }
+  else
+  {
+    @foreach (Stylist stylist in Model.GetStylists())
+    {
+      <h2><a href="/specialties/@stylist.GetId()">@stylist.GetName()</a></h2>
+    }
+  }
+  <br>
+  <h2>Add Stylist to Specialty</h2>
+  <br>
+  <form action="/specialties/{id}" method="post"><h2>
+    <input for="stylistId" name="stylistId" type="hidden" value="@Model.GetId()">
+    <label for="description">Stylist Name</label>
+    <input id="description" name="description" type="text"><br>
+    <br>
+
+    <button type="submit">Add</button>
+  </form>
+<br>
+<br>
+<h2><p><a href="/">Back Home</a></p></h2>
+</div>

@@ -1,5 +1,6 @@
 body {
   background-color: pink;
+  text-decoration: none;
 }
 
 .container {
@@ -17,4 +18,5 @@ h1 {
 }
 ul {
   list-style-position: inside;
+  text-decoration: none;
 }
