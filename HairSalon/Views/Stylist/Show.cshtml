@@ -25,20 +25,26 @@
     @foreach (Specialty specialty in Model.GetSpecialties())
     {
       <!-- <h2><a href="/specialties/@specialty.GetId()">@specialty.GetDescription()</a></h2> -->
-        <h2><a href="/specialties/@Specialty.Find(@specialty.GetId())/specialties/@specialty.GetId()">@specialty.GetDescription()</a></h2>
+        <h2><a href="/specialties/@specialty.GetId()">@specialty.GetDescription()</a></h2>
     }
   }
 
   <h2>Add a Specialty</h2>
   <br>
-  <form action="/stylists/{id}" method="post"><h2>
-    <input for="specialtyId" name="specialtyId" type="hidden" value="@Model.GetId()">
-    <label for="description">Specialty</label>
-    <input id="description" name="description" type="text"><br>
-    <br>
-
-    <button type="submit">Add</button>
-  </form>
+  <form id="add-specialty-form" action="/stylists/@Model.GetId()/specialties/new" method="post">
+              <br>
+                <select name="specialtyId">
+                    <option value="0">Select A Specialty</option>
+                    @foreach(Specialty specialty in Specialty.GetAll())
+                    {
+                        @if(!Model.GetSpecialties().Contains(specialty))
+                        {
+                        <option value="@specialty.GetId()">@specialty.GetDescription()</option>
+                        }
+                    }
+                </select>
+                <button class="btn-comm" type="submit">+</button>
+            </form>
   <br>
   <br>
   <h2>Clients</h2>
